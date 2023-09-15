@@ -1,6 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Sidenav from "@/components/Sidenav";
+import {Sidebar} from "flowbite-react";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} `}>
+        <p className='lg:hidden'>The app is not optimized yet.</p>
+        <div className={'hidden md:hidden lg:grid grid-cols-10'}>
+          {/* Navigation */}
+          <div className={'col-span-2'}>
+            <Sidenav></Sidenav>
+          </div>
+
+
+          {/* Main Application Content */}
+          <main className={'col-span-8'}>
+
+            <div className={'container col-span-10 min-h-screen'}>
+              {children}
+            </div>
+          </main>
+        </div>
+      </body>
     </html>
   )
 }
